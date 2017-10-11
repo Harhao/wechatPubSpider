@@ -35,4 +35,5 @@
 	```
 	$ scrapy crawl data
 	```
+	[!数据](https://github.com/laternkiwis/wechatPubSpider/blob/master/%E6%8D%95%E8%8E%B7.PNG)
 > 如果遇到异常，可以通过抓包，获取请求头信息的X-wechat-key值。这个值有时间限制，大概几分钟更新一次。所以可以手动去更新该值
