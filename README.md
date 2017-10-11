@@ -27,7 +27,3 @@
 	```
    	$ scrapy crawl wechat
   	```
-	- 运行getSession.py获取单一公众号的文章权限wap_sid2,把__biz公众号id与权限值入库对应。  
-  	```
-   	$ scrapy crawl getSession
-  	``
