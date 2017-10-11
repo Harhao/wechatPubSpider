@@ -15,3 +15,6 @@ class WechatspiderItem(scrapy.Item):
 
 class DataspiderItem(scrapy.Item):
     pass
+class GetsessionspiderItem(scrapy.Item):
+    biz=scrapy.Field()
+    wap_sid2=scrapy.Field()

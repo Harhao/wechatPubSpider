@@ -44,3 +44,6 @@ class WechatSpider(scrapy.Spider):
         item=WechatspiderItem()
         item["wechatID"]=bizText
         yield item
+
+
+

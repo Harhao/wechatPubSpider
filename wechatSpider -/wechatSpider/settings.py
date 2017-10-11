@@ -27,14 +27,13 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 5
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
 COOKIES_ENABLED = False
-
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
 
@@ -46,15 +45,16 @@ COOKIES_ENABLED = False
 
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'wechatSpider.middlewares.WechatspiderSpiderMiddleware': 543,
-#}
+# SPIDER_MIDDLEWARES = {
+#    # 'wechatSpider.middlewares.WechatspiderSpiderMiddleware': 543,
+#    # 'wechatSpider.middlewares.GetsessionspiderSpiderMiddleware': 543,
+# }
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'wechatSpider.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+# DOWNLOADER_MIDDLEWARES = {
+#    'wechatSpider.middlewares.getSessionDownloaderMiddleware': 543,
+# }
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -67,6 +67,7 @@ COOKIES_ENABLED = False
 ITEM_PIPELINES = {
    # 'wechatSpider.pipelines.WechatspiderPipeline': 300,
    'wechatSpider.pipelines.DataspiderPipeline': 301,
+   # 'wechatSpider.pipelines.GetsessionspiderPipeline': 302,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -89,6 +90,7 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+HTTPERROR_ALLOWED_CODES = [302,404]
 MONGO_URI=""
 MONGO_DATABASE=""
 MONGO_USER=""
