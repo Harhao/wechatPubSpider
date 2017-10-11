@@ -31,7 +31,3 @@
   	```
    	$ scrapy crawl getSession
   	```
-	- 运行data.py获取数据。从数据库读取biz和wap_sid2.
-	```
-	 $ scrapy crawl data
-	```
