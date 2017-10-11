@@ -2,8 +2,8 @@
 > 微信公众号爬虫，限制一：微信搜狗引擎每个公众号只能爬取10条最近的文章；所以为了爬取喜欢的所有的公众文章。萌发以下思路:要想抓取微信公众号，主要需要两个主要参数:1. __biz(微信公众号id),2.wap_sid2(类似于获取公众号单一文章的权限)。
 
 - 1.获取公众号id:
-  - 随意输入关键词，然后获取关键词相关的微信公众号，接着获取微信公众号id。微信公众号id的获取首先是从搜狗引擎微信公众号搜索获取。获取方法：首先通过搜狗的搜索框输入关键词获取你想要的微信公众号（网址 http://weixin.sogou.com/weixin?type=1&s_from=input&query=java&ie=utf8&_sug_=n&_sug_type_= ）其中query是搜索的关键词。获取微信公众号列表。然后从微信公众号中获取单个公众号的链接。例如：( http://mp.weixin.qq.com/profile?src=3&timestamp=1507726402&ver=1&signature=iMJCDXFhGBo97Op01uxzNsyq-ZgPVvXxWmxhi*MFxbO-jY0GKJ7jjKzHiAhLGMldG95QBT6F4B7IKNsGI8G*WQ== ) 
-  - 进入单个微信公众号，然后获取其中的页面的代码。在其中的javascript中存在这个公众号的__biz（微信公众号id）
+	- 随意输入关键词，然后获取关键词相关的微信公众号，接着获取微信公众号id。微信公众号id的获取首先是从搜狗引擎微信公众号搜索获取。获取方法：首先通过搜狗的搜索框输入关键词获取你想要的微信公众号（网址 http://weixin.sogou.com/weixin?type=1&s_from=input&query=java&ie=utf8&_sug_=n&_sug_type_= ）其中query是搜索的关键词。获取微信公众号列表。然后从微信公众号中获取单个公众号的链接。例如：( http://mp.weixin.qq.com/profile?src=3&timestamp=1507726402&ver=1&signature=iMJCDXFhGBo97Op01uxzNsyq-ZgPVvXxWmxhi*MFxbO-jY0GKJ7jjKzHiAhLGMldG95QBT6F4B7IKNsGI8G*WQ== )
+	- 进入单个微信公众号，然后获取其中的页面的代码。在其中的javascript中存在这个公众号的__biz（微信公众号id）
   ```
      <script type="text/javascript">
      document.domain="qq.com";
@@ -17,8 +17,21 @@
   
   ``` 
 - 2.wap_sid2单一公众号的所有文章获取的权限值。
-  - wap_sid2参数值的获取需要通过对微信手机客户端app进行抓包分析，然后获取其中的权限。从Fiddler中观察，微信客户端进入到单一具体的公众号，获取公众号的历史消息列表。经历了几个网址获取获取的权限值。
+	- wap_sid2参数值的获取需要通过对微信手机客户端app进行抓包分析，然后获取其中的权限。从Fiddler中观察，微信客户端进入到单一具体的公众号，获取公众号的历史消息列表。经历了几个网址获取获取的权限值。
   
 - 3.使用方法：
-  - wechatPubSpider/wechatSpider -/wechatSpider/目录下面的settings文件，MONGO_URI，MONGO_DATABASE，MONGO_USER，MONGO_PASS分别填写项目保存数据的地址IP，数据库，用户以及密码。
-  - wechatPubSpider/wechatSpider -/wechatSpider/spiders/目录下面settings文件,MONGO_URI=""MONGO_DATABASE="",MONGO_USER,MONGO_PASS,ARTICLE,WECHATID,RESPONSE
+	- wechatPubSpider/wechatSpider -/wechatSpider/目录下面的settings文件，MONGO_URI，MONGO_DATABASE，MONGO_USER，MONGO_PASS分别填写项目保存数据的地址IP，数据库，用户以及密码。
+	- wechatPubSpider/wechatSpider -/wechatSpider/spiders/目录下面settings文件,MONGO_URI，MONGO_DATABASE,MONGO_USER,MONGO_PASS,ARTICLE,WECHATID,RESPONSE(相同的是如上)，其中不同的，是数据库里面的collectionName，可以随意起喜欢的名字。
+- 4.启用顺序：
+	- 运行wechat.py文件，然后输入关键词，获取微信公众号ID。存入MongoDB数据库。
+	```
+   	$ scrapy crawl wechat
+  	```
+	- 运行getSession.py获取单一公众号的文章权限wap_sid2,把__biz公众号id与权限值入库对应。  
+  	```
+   	$ scrapy crawl getSession
+  	```
+	- 运行data.py获取数据。从数据库读取biz和wap_sid2.
+	```
+	 $ scrapy crawl data
+	```
