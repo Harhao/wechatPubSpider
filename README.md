@@ -4,4 +4,17 @@
 - 1.获取公众号id:
   - 随意输入关键词，然后获取关键词相关的微信公众号，接着获取微信公众号id。微信公众号id的获取首先是从搜狗引擎微信公众号搜索获取。获取方法：首先通过搜狗的搜索框输入关键词获取你想要的微信公众号（网址 http://weixin.sogou.com/weixin?type=1&s_from=input&query=java&ie=utf8&_sug_=n&_sug_type_= ）其中query是搜索的关键词。获取微信公众号列表。然后从微信公众号中获取单个公众号的链接。例如：( http://mp.weixin.qq.com/profile?src=3&timestamp=1507726402&ver=1&signature=iMJCDXFhGBo97Op01uxzNsyq-ZgPVvXxWmxhi*MFxbO-jY0GKJ7jjKzHiAhLGMldG95QBT6F4B7IKNsGI8G*WQ== ) 
   - 进入单个微信公众号，然后获取其中的页面的代码。在其中的javascript中存在这个公众号的__biz（微信公众号id）
+  ```
+  <script type="text/javascript">
+    document.domain="qq.com";
+    var biz = "MzI3MTA2OTkxNQ==" || "";
+    var src = "3" ; 
+    var ver = "1" ; 
+    var timestamp = "1507726402" ; 
+    var signature = "MgPVC3IPsaxxEYqtBq2IOampNVHLxE*D2-f9b*rLZKzoGtUHRNbDczmbZCSVr2xU0so04b-YJ5*pnPENrnDsMg==" ; 
+    var name="java--demon"||"xxxx";
+        var msgList = {"list":[{"app_msg_ext_info":{"author":"","content":"","content_url":"/s?timestamp=1507726847&amp;src=3&amp;ver=1&amp;signature=7m*l*VL7N2rmoUqDTJ0cU8HGgyZ6W6vz6lCZESAIKyM0FoT7uPgVZghVou*eg9godSOwuIuNLi3tpwgBVaJEIUtJJTebhtJ*I9ld*q8au3PdmTGHiPtNiNqD1RqpDdG25J7*-jP2pSUJIlp8Ygf90XvblaJQpv9RHGCv-Urxljc=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz/xP5fTfMpdGWskgFKqK158QFLCRtvEAqzD5K97yKF7Hd3Gp34JFR0bFrGahRblIfh6eQxcEpDCAnia1I7UIyrL7w/0?wx_fmt=jpeg","del_flag":1,"digest":"111","fileid":403730075,"is_multi":0,"item_show_type":0,"multi_app_msg_item_list":[],"source_url":"","subtype":9,"title":"新年活动"},"comm_msg_info":{"content":"","datetime":1463107392,"fakeid":"3271069915","id":421070031,"status":2,"type":49}},{"app_msg_ext_info":{"author":"","content":"","content_url":"/s?timestamp=1507726847&amp;src=3&amp;ver=1&amp;signature=7m*l*VL7N2rmoUqDTJ0cU8HGgyZ6W6vz6lCZESAIKyM0FoT7uPgVZghVou*eg9godSOwuIuNLi3tpwgBVaJEIT-v9GhM*P30y4ABR7qZCplkPTZPR8fUsx38LmdErF7aPGHE6cTvHYCllVIQS6-rn6VNpzVAO53lVxwGp9*KyME=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz/xP5fTfMpdGWskgFKqK158QFLCRtvEAqzD5K97yKF7Hd3Gp34JFR0bFrGahRblIfh6eQxcEpDCAnia1I7UIyrL7w/0?wx_fmt=jpeg","del_flag":1,"digest":"111","fileid":403730075,"is_multi":0,"item_show_type":0,"multi_app_msg_item_list":[],"source_url":"","subtype":9,"title":"新年活动"},"comm_msg_info":{"content":"","datetime":1453978263,"fakeid":"3271069915","id":403730105,"status":2,"type":49}}]};
+        seajs.use("sougou/profile.js");
+</script>
 
+  ```
