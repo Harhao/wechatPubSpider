@@ -25,12 +25,12 @@
 - 4.启用顺序：
 	- 运行wechat.py文件，然后输入关键词，获取微信公众号ID。存入MongoDB数据库。
 	```
-   	$ scrapy crawl wechat
-  	```
+	$ scrapy crawl wechat
+	```
 	- 运行getSession.py文件，获取权限值wap_sid2，并把biz与wap_sid2对应入库。
 	```
-   	$ scrapy crawl getSession
-  	```
+	$ scrapy crawl getSession
+	```
 	- 运行data.py文件，爬取数据，存入数据库。
 	```
 	$ scrapy crawl data
